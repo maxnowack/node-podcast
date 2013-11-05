@@ -1,10 +1,11 @@
 {
-    "name": "rss",
-    "version": "0.2.1",
-    "description": "RSS feed generator. A really simple API to add RSS feeds to any project.",
-    "homepage": "http://github.com/dylang/node-rss",
-    "author": "Dylan Greene <dylang@gmail.com>",
+    "name": "podcast",
+    "version": "0.1.0",
+    "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
+    "homepage": "http://github.com/maxnowack/node-podcast",
+    "author": "Max Nowack <max@unsou.de>",
     "contributors": [
+        "Max Nowack <max@unsou.de>",
         "Dylan Greene <dylang@gmail.com>",
         "Xavier Damman <xdamman@gmail.com>",
         "Michael R. Lange",
@@ -16,12 +17,12 @@
     "repository":
     {
         "type": "git",
-        "url": "http://github.com/dylang/node-rss"
+        "url": "http://github.com/maxnowack/node-podcast"
     },
     "bugs":
     {
-        "mail": "dylang@gmail.com",
-        "url": "http://github.com/dylang/node-rss/issues"
+        "mail": "max@unsou.de",
+        "url": "http://github.com/maxnowack/node-podcast/issues"
     },
     "dependencies":
     {
@@ -32,13 +33,13 @@
       "chai": "~1.7.2",
       "mocha": "~1.12.0"
     },
-    "main": "lib/rss.js",
+    "main": "lib/podcast.js",
     "scripts": {
       "test": "./node_modules/.bin/mocha --reporter spec"
     },
     "engines": { "node": ">=0.4.0" },
     "licenses" :
     [
-        { "type" : "MIT", "url" : "http://github.com/dylang/node-rss/raw/master/LICENSE" }
+        { "type" : "MIT", "url" : "http://github.com/maxnowack/node-podcast/raw/master/LICENSE" }
     ]
 }
