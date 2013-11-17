@@ -1,21 +1,19 @@
-# RSS for Node [![Build Status](https://secure.travis-ci.org/dylang/node-rss.png)](http://travis-ci.org/dylang/node-rss)
+# Podcast RSS for Node [
 
-  [![NPM](https://nodei.co/npm/rss.png?downloads=true)](https://nodei.co/npm/rss/)
-
-> Fast and simple RSS generator/builder for Node projects. Supports enclosures and GeoRSS.
+> Fast and simple Podcast RSS generator/builder for Node projects. Supports enclosures and GeoRSS.
 
 ## Install
 
-    $ npm install rss
+    $ npm install podcast
 
 ## Usage
 
 ### Create a new feed
 
 ```js
-var RSS = require('rss');
+var Podcast = require('podcast');
 
-var feed = new RSS(feedOptions);
+var feed = new Podcast(feedOptions);
 ```
 
 #### `feedOptions`
@@ -35,6 +33,13 @@ var feed = new RSS(feedOptions);
  * `categories` _optional_ **array of strings**  One or more categories this feed belongs to.
  * `pubDate` _optional_ **Date object or date string** The publication date for content in the feed
  * `ttl` _optional_ **integer** Number of minutes feed can be cached before refreshing from source.
+ * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
+ * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
+ * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
+ * `itunesOwner` _optional_ **object** (iTunes specific) owner of the podcast ( {name:String, email:String} )
+ * `itunesExplicit _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
+ * `itunesCategory _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{name:String, subcat:Array}]}] )
+ * `itunesImage _optional_ **string** (iTunes specific) link to an image for the podcast
 
 ### Add items to a feed
 
@@ -62,6 +67,12 @@ feed.item(itemOptions);
  if the content should be presented as unread.
  * `lat` _optional_ **number** The latitude coordinate of the item.
  * `long` _optional_ **number** The longitude coordinate of the item.
+ * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
+ * `itunesExplicit _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
+ * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
+ * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
+ * `itunesDuration _optional_ **number** (iTunes specific) duration of the podcast item in seconds
+ * `itunesKeywords _optional_ **array of string** (iTunes specific) keywords of the podcast
 
 #### Feed XML
 
@@ -77,10 +88,10 @@ This returns the XML as a string.
 ## Example Usage
 
 ```js
-var RSS = require('rss');
+var Podcast = require('podcast');
 
 /* lets create an rss feed */
-var feed = new RSS({
+var feed = new Podcast({
     title: 'title',
     description: 'description',
     feed_url: 'http://example.com/rss.xml',
@@ -94,7 +105,17 @@ var feed = new RSS({
     language: 'en',
     categories: ['Category 1','Category 2','Category 3'],
     pubDate: 'May 20, 2012 04:00:00 GMT',
-    ttl: '60'
+    ttl: '60',
+    itunesAuthor: 'Max Nowack',
+    itunesSubtitle: 'I am a sub title',
+    itunesSummary: 'I am a summary',
+    itunesOwner: { name: 'Max Nowack', email:'max@unsou.de' },
+    itunesExplicit: false,
+    itunesCategory: {
+        "name": "Entertainment",
+        "subcats": null
+    },
+    itunesImage: 'http://link.to/image.png'
 });
 
 /* loop over data and add to feed */
@@ -108,7 +129,13 @@ feed.item({
     date: 'May 27, 2012' // any format that js Date can parse.
     lat: 33.417974, //optional latitude field for GeoRSS
     long: -111.933231, //optional longitude field for GeoRSS
-    enclosure : {url:'...', file:'path-to-file'} // optional enclosure
+    enclosure : {url:'...', file:'path-to-file'}, // optional enclosure
+    itunesAuthor: 'Max Nowack',
+    itunesExplicit: false,
+    itunesSubtitle: 'I am a sub title',
+    itunesSummary: 'I am a summary',
+    itunesDuration: 12345,
+    itunesKeywords: ['javascript','podcast']
 });
 
 // cache the xml to send to clients
