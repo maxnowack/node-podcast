@@ -5,14 +5,7 @@
     "homepage": "http://github.com/maxnowack/node-podcast",
     "author": "Max Nowack <max@unsou.de>",
     "contributors": [
-        "Max Nowack <max@unsou.de>",
-        "Dylan Greene <dylang@gmail.com>",
-        "Xavier Damman <xdamman@gmail.com>",
-        "Michael R. Lange",
-        "Victor Jonsson",
-        "Danny Graham",
-        "Patrick Garman <contact@pmgarman.me>",
-        "Fred Morstatter"
+        "Max Nowack <max@unsou.de>"
     ],
     "repository":
     {
@@ -26,8 +19,7 @@
     },
     "dependencies":
     {
-        "xml": "~1.0.0",
-        "mime": "~1.2.11"
+        "rss": "~1.1.1"
     },
     "devDependencies": {
       "chai": "~1.7.2",
