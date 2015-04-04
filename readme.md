@@ -38,9 +38,9 @@ var feed = new Podcast(feedOptions);
  * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
  * `itunesOwner` _optional_ **object** (iTunes specific) owner of the podcast ( {name:String, email:String} )
- * `itunesExplicit _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
- * `itunesCategory _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{name:String, subcat:Array}]}] )
- * `itunesImage _optional_ **string** (iTunes specific) link to an image for the podcast
+ * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
+ * `itunesCategory` _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{name:String, subcat:Array}]}] )
+ * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the podcast
 
 ### Add items to a feed
 
@@ -68,12 +68,20 @@ feed.item(itemOptions);
  if the content should be presented as unread.
  * `lat` _optional_ **number** The latitude coordinate of the item.
  * `long` _optional_ **number** The longitude coordinate of the item.
+ * `enclosure` _optional_ **object** Attach a multimedia file to this item.
+    * `url` **string** Url to the related file.
+    * `file` _optional_ **string** Path to the related file on the filesystem. Used to fill out size and mime
+    information.
+    * `size` _optional_ **number** Number of bytes in the file. The length field will defualt to 0 if the
+    `size` or `file` fields have not been set.
+    * `mime` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
+    not set.
  * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
- * `itunesExplicit _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
+ * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
- * `itunesDuration _optional_ **number** (iTunes specific) duration of the podcast item in seconds
- * `itunesKeywords _optional_ **array of string** (iTunes specific) keywords of the podcast
+ * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
+ * `itunesKeywords` _optional_ **array of string** (iTunes specific) keywords of the podcast
 
 #### Feed XML
 
