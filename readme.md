@@ -1,4 +1,4 @@
-# Podcast RSS for Node 
+# Podcast RSS for Node
 This is a fork of https://github.com/dylang/node-rss
 
 > Fast and simple Podcast RSS generator/builder for Node projects. Supports enclosures and GeoRSS.
@@ -39,7 +39,7 @@ var feed = new Podcast(feedOptions);
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
  * `itunesOwner` _optional_ **object** (iTunes specific) owner of the podcast ( {name:String, email:String} )
  * `itunesExplicit _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
- * `itunesCategory _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{name:String, subcat:Array}]}] )
+ * `itunesCategory _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{text:String, subcats:Array}]}] )
  * `itunesImage _optional_ **string** (iTunes specific) link to an image for the podcast
 
 ### Add items to a feed

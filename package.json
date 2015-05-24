@@ -1,18 +1,11 @@
 {
     "name": "podcast",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
     "homepage": "http://github.com/maxnowack/node-podcast",
     "author": "Max Nowack <max@unsou.de>",
     "contributors": [
-        "Max Nowack <max@unsou.de>",
-        "Dylan Greene <dylang@gmail.com>",
-        "Xavier Damman <xdamman@gmail.com>",
-        "Michael R. Lange",
-        "Victor Jonsson",
-        "Danny Graham",
-        "Patrick Garman <contact@pmgarman.me>",
-        "Fred Morstatter"
+        "Max Nowack <max@unsou.de>"
     ],
     "repository":
     {
@@ -26,18 +19,28 @@
     },
     "dependencies":
     {
-        "xml": "~1.0.0",
-        "mime": "~1.2.11"
+        "rss": "~1.1.1"
     },
     "devDependencies": {
-      "chai": "~1.7.2",
-      "mocha": "~1.12.0"
+      "folderify": "^0.6.0",
+      "grunt": "^0.4.5",
+      "grunt-contrib-jshint": "^0.11.0",
+      "grunt-release": "^0.11.0",
+      "include-folder": "^0.7.0",
+      "load-grunt-tasks": "^3.1.0",
+      "mockdate": "^1.0.1",
+      "prova": "^2.0.3",
+      "q": "^1.0.0",
+      "tape": "^3.0.3",
+      "time-grunt": "^1.0.0",
+      "xml2js": "^0.4.1"
     },
     "main": "lib/podcast.js",
     "scripts": {
-      "test": "./node_modules/.bin/mocha --reporter spec"
+      "test": "tape test",
+      "lint": "grunt lint",
+      "test:browser": "prova -b"
     },
-    "engines": { "node": ">=0.4.0" },
     "licenses" :
     [
         { "type" : "MIT", "url" : "http://github.com/maxnowack/node-podcast/raw/master/LICENSE" }
