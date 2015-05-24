@@ -121,8 +121,10 @@ var feed = new Podcast({
     itunesOwner: { name: 'Max Nowack', email:'max@unsou.de' },
     itunesExplicit: false,
     itunesCategory: {
-        "name": "Entertainment",
-        "subcats": null
+        "text": "Entertainment",
+        "subcats": [{
+          "text": "Television"
+        }]
     },
     itunesImage: 'http://link.to/image.png'
 });
