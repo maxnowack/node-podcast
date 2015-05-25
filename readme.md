@@ -1,5 +1,4 @@
-# Podcast RSS for Node
-This is a fork of https://github.com/dylang/node-rss
+# Podcast RSS for Node [![Build Status](https://travis-ci.org/maxnowack/node-podcast.svg)](https://travis-ci.org/maxnowack/node-podcast)
 
 > Fast and simple Podcast RSS generator/builder for Node projects. Supports enclosures and GeoRSS.
 
