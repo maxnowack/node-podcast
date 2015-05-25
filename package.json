@@ -1,6 +1,6 @@
 {
     "name": "podcast",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
     "homepage": "http://github.com/maxnowack/node-podcast",
     "author": "Max Nowack <max@unsou.de>",
