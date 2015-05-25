@@ -82,6 +82,7 @@ feed.item(itemOptions);
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
  * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
  * `itunesKeywords` _optional_ **array of string** (iTunes specific) keywords of the podcast
+ * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the item
 
 #### Feed XML
 
