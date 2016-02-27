@@ -19,7 +19,7 @@
     },
     "dependencies":
     {
-        "rss": "~1.1.1"
+        "rss": "^1.2.1"
     },
     "devDependencies": {
       "folderify": "^0.6.0",
