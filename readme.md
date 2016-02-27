@@ -73,7 +73,7 @@ feed.item(itemOptions);
     information.
     * `size` _optional_ **number** Number of bytes in the file. The length field will defualt to 0 if the
     `size` or `file` fields have not been set.
-    * `mime` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
+    * `type` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
     not set.
  * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
