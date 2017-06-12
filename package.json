@@ -7,42 +7,41 @@
     "contributors": [
         "Max Nowack <max@unsou.de>"
     ],
-    "repository":
-    {
+    "repository": {
         "type": "git",
         "url": "http://github.com/maxnowack/node-podcast"
     },
-    "bugs":
-    {
+    "bugs": {
         "mail": "max@unsou.de",
         "url": "http://github.com/maxnowack/node-podcast/issues"
     },
-    "dependencies":
-    {
+    "dependencies": {
         "rss": "~1.1.1"
     },
     "devDependencies": {
-      "folderify": "^0.6.0",
-      "grunt": "^0.4.5",
-      "grunt-contrib-jshint": "^0.11.0",
-      "grunt-release": "^0.11.0",
-      "include-folder": "^0.7.0",
-      "load-grunt-tasks": "^3.1.0",
-      "mockdate": "^1.0.1",
-      "prova": "^2.0.3",
-      "q": "^1.0.0",
-      "tape": "^3.0.3",
-      "time-grunt": "^1.0.0",
-      "xml2js": "^0.4.1"
+        "folderify": "^0.6.0",
+        "grunt": "^0.4.5",
+        "grunt-contrib-jshint": "^0.11.0",
+        "grunt-release": "^0.11.0",
+        "include-folder": "^0.7.0",
+        "load-grunt-tasks": "^3.1.0",
+        "mockdate": "^1.0.1",
+        "prova": "azer/prova",
+        "q": "^1.0.0",
+        "tape": "^3.0.3",
+        "time-grunt": "^1.0.0",
+        "xml2js": "^0.4.1"
     },
     "main": "lib/podcast.js",
     "scripts": {
-      "test": "tape test",
-      "lint": "grunt lint",
-      "test:browser": "prova -b"
+        "test": "tape test",
+        "lint": "grunt lint",
+        "test:browser": "prova -b"
     },
-    "licenses" :
-    [
-        { "type" : "MIT", "url" : "http://github.com/maxnowack/node-podcast/raw/master/LICENSE" }
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://github.com/maxnowack/node-podcast/raw/master/LICENSE"
+        }
     ]
 }
