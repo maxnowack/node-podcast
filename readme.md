@@ -40,6 +40,7 @@ var feed = new Podcast(feedOptions);
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesCategory` _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{text:String, subcats:Array}]}] )
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the podcast
+ * `customElements`: _optional_ **array of objects** Add any custom tag ( [{yourCustomAttribute: yourCustomValue}] )
 
 ### Add items to a feed
 
@@ -82,6 +83,7 @@ feed.item(itemOptions);
  * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
  * `itunesKeywords` _optional_ **array of string** (iTunes specific) keywords of the podcast
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the item
+ * `customElements`: _optional_ **array of objects** Add any custom tag ( [{yourCustomAttribute: yourCustomValue}] )
 
 #### Feed XML
 
