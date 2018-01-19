@@ -89,7 +89,7 @@ feed.addItem(itemOptions);
 #### Feed XML
 
 ```js
-const xml = feed.xml(indent);
+const xml = feed.buildXml(indent);
 ```
 
 This returns the XML as a string.
@@ -153,12 +153,12 @@ feed.addItem({
 });
 
 // cache the xml to send to clients
-const xml = feed.xml();
+const xml = feed.buildXml();
 ```
 
 ## Notes
  * You do not need to escape anything. This module will escape characters when necessary.
- * This module is very fast but you might as well cache the output of xml() and serve
+ * This module is very fast but you might as well cache the output of buildXml() and serve
  it until something changes.
 
 # Contributing
