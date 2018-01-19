@@ -1,6 +1,6 @@
 {
   "name": "podcast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "test": "npm run lint && npm run build && ava"
   },
   "files": [
-    "src/*"
+    "dist/*"
   ],
   "licenses": [
     {
