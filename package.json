@@ -1,48 +1,78 @@
 {
-    "name": "podcast",
-    "version": "0.2.2",
-    "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
-    "homepage": "http://github.com/maxnowack/node-podcast",
-    "author": "Max Nowack <max@unsou.de>",
-    "contributors": [
-        "Max Nowack <max@unsou.de>"
+  "name": "podcast",
+  "version": "1.0.0",
+  "description": "Podcast RSS feed generator. A really simple API to add Podcast-RSS feeds to any project.",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "lint": "eslint src",
+    "build": "babel src -d dist",
+    "generate": "babel-node generate.js",
+    "clean": "rm -rf dist",
+    "test": "npm run lint && ava"
+  },
+  "files": [
+    "src/index.js"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/maxnowack/node-podcast/raw/master/LICENSE"
+    }
+  ],
+  "homepage": "http://github.com/maxnowack/node-podcast",
+  "author": "Max Nowack <max@unsou.de>",
+  "contributors": [
+    "Max Nowack <max@unsou.de>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/maxnowack/node-podcast"
+  },
+  "bugs": {
+    "mail": "max@unsou.de",
+    "url": "http://github.com/maxnowack/node-podcast/issues"
+  },
+  "ava": {
+    "concurrency": 5,
+    "failFast": true,
+    "require": [
+      "babel-register"
     ],
-    "repository":
-    {
-        "type": "git",
-        "url": "http://github.com/maxnowack/node-podcast"
-    },
-    "bugs":
-    {
-        "mail": "max@unsou.de",
-        "url": "http://github.com/maxnowack/node-podcast/issues"
-    },
-    "dependencies":
-    {
-        "rss": "~1.1.1"
-    },
-    "devDependencies": {
-      "folderify": "^0.6.0",
-      "grunt": "^0.4.5",
-      "grunt-contrib-jshint": "^0.11.0",
-      "grunt-release": "^0.11.0",
-      "include-folder": "^0.7.0",
-      "load-grunt-tasks": "^3.1.0",
-      "mockdate": "^1.0.1",
-      "prova": "^2.0.3",
-      "q": "^1.0.0",
-      "tape": "^3.0.3",
-      "time-grunt": "^1.0.0",
-      "xml2js": "^0.4.1"
-    },
-    "main": "lib/podcast.js",
-    "scripts": {
-      "test": "tape test",
-      "lint": "grunt lint",
-      "test:browser": "prova -b"
-    },
-    "licenses" :
-    [
-        { "type" : "MIT", "url" : "http://github.com/maxnowack/node-podcast/raw/master/LICENSE" }
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4.8.7"
+          }
+        }
+      ]
     ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base"
+    ],
+    "parser": "babel-eslint"
+  },
+  "dependencies": {
+    "rss": "^1.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "include-folder": "^1.0.0",
+    "mockdate": "^2.0.2",
+    "xml2js": "^0.4.1"
+  }
 }
