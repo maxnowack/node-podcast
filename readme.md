@@ -11,9 +11,9 @@
 ### Create a new feed
 
 ```js
-var Podcast = require('podcast');
+import Podcast from 'podcast';
 
-var feed = new Podcast(feedOptions);
+const feed = new Podcast(feedOptions);
 ```
 
 #### `feedOptions`
@@ -21,9 +21,9 @@ var feed = new Podcast(feedOptions);
  * `title` **string** Title of your site or feed
  * `description` _optional_ **string** A short description of the feed.
  * `generator` _optional_  **string** Feed generator.
- * `feed_url` **url string** Url to the rss feed.
- * `site_url` **url string** Url to the site that the feed is for.
- * `image_url` _optional_  **url string* Small image for feed readers to use.
+ * `feedUrl` **url string** Url to the rss feed.
+ * `siteUrl` **url string** Url to the site that the feed is for.
+ * `imageUrl` _optional_  **url string* Small image for feed readers to use.
  * `docs` _optional_ **url string** Url to documentation on this feed.
  * `author` **string** Who owns this feed.
  * `managingEditor` _optional_ **string** Who manages content in this feed.
@@ -40,6 +40,8 @@ var feed = new Podcast(feedOptions);
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesCategory` _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{text:String, subcats:Array}]}] )
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the podcast
+ * `customNamespaces` _optional_ **object** Put additional namespaces in <rss> element (without 'xmlns:' prefix)
+ * `customElements` _optional_ **array** Put additional elements in the feed (node-xml syntax)
 
 ### Add items to a feed
 
@@ -47,7 +49,7 @@ An item can be used for a blog entry, project update, log entry, etc.  Your RSS 
 an have any number of items. Most feeds use 20 or fewer items.
 
 ```js
-feed.item(itemOptions);
+feed.addItem(itemOptions);
 ```
 
 #### itemOptions
@@ -73,20 +75,21 @@ feed.item(itemOptions);
     information.
     * `size` _optional_ **number** Number of bytes in the file. The length field will defualt to 0 if the
     `size` or `file` fields have not been set.
-    * `mime` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
+    * `type` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
     not set.
  * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
  * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
- * `itunesKeywords` _optional_ **array of string** (iTunes specific) keywords of the podcast
+ * `itunesKeywords` _optional_ **array of strings** (iTunes specific) keywords of the podcast
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the item
+ * `customElements` _optional_ **array** Put additional elements in the item (node-xml syntax)
 
 #### Feed XML
 
 ```js
-var xml = feed.xml(indent);
+const xml = feed.xml(indent);
 ```
 
 This returns the XML as a string.
@@ -97,10 +100,10 @@ This returns the XML as a string.
 ## Example Usage
 
 ```js
-var Podcast = require('podcast');
+import Podcast from 'podcast';
 
 /* lets create an rss feed */
-var feed = new Podcast({
+const feed = new Podcast({
     title: 'title',
     description: 'description',
     feed_url: 'http://example.com/rss.xml',
@@ -130,7 +133,7 @@ var feed = new Podcast({
 });
 
 /* loop over data and add to feed */
-feed.item({
+feed.addItem({
     title:  'item title',
     description: 'use this for the content. It can include html.',
     url: 'http://example.com/article4?this&that', // link to the item
@@ -150,25 +153,13 @@ feed.item({
 });
 
 // cache the xml to send to clients
-var xml = feed.xml();
+const xml = feed.xml();
 ```
-
-## Tests
-
-Tests included use Mocha. Use `npm test` to run the tests.
-
-    $ npm test
 
 ## Notes
  * You do not need to escape anything. This module will escape characters when necessary.
  * This module is very fast but you might as well cache the output of xml() and serve
  it until something changes.
-
-# History
-
-I started this module over two years ago (April 2011) because there weren't any Node modules
-for creating RSS. Besides these [25 modules](https://npmjs.org/browse/depended/rss)
-I would love to know what other projects are using it.
 
 # Contributing
 
@@ -180,7 +171,7 @@ are included.
 
 (The MIT License)
 
-Copyright (c) 2011-2013 Dylan Greene <dylang@gmail.com>
+Copyright (c) 2013-2017 Max Nowack <max@unsou.de>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
