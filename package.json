@@ -9,10 +9,10 @@
     "build": "babel src -d dist",
     "generate": "babel-node generate.js",
     "clean": "rm -rf dist",
-    "test": "npm run lint && ava"
+    "test": "npm run lint && npm run build && ava"
   },
   "files": [
-    "src/index.js"
+    "src/*"
   ],
   "licenses": [
     {
@@ -47,7 +47,7 @@
         "env",
         {
           "targets": {
-            "node": "4.8.7"
+            "node": "6.12.3"
           }
         }
       ]
@@ -57,7 +57,11 @@
     "extends": [
       "airbnb-base"
     ],
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+      "import/no-named-as-default": "off",
+      "import/no-named-as-default-member": "off"
+    }
   },
   "dependencies": {
     "rss": "^1.2.2"
@@ -72,7 +76,6 @@
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.8.0",
     "include-folder": "^1.0.0",
-    "mockdate": "^2.0.2",
-    "xml2js": "^0.4.1"
+    "mockdate": "^2.0.2"
   }
 }
