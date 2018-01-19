@@ -10,9 +10,9 @@ mockdate.set('Wed, 10 Dec 2014 19:04:57 GMT');
 
 test('empty feed', (t) => {
   const feed = new Podcast();
-  t.is(feed.buildXml(), expectedOutput.default.trim());
+  t.is(feed.buildXml({ indent: '  ' }), expectedOutput.default.trim());
   feed.addItem();
-  t.is(feed.buildXml(), expectedOutput.defaultOneItem.trim());
+  t.is(feed.buildXml({ indent: '  ' }), expectedOutput.defaultOneItem.trim());
 });
 
 test('podcast', (t) => {
@@ -55,5 +55,5 @@ test('podcast', (t) => {
     itunesDuration: '7:04',
   });
 
-  t.is(feed.buildXml({ indent: true }), expectedOutput.podcast.trim());
+  t.is(feed.buildXml({ indent: '  ' }), expectedOutput.podcast.trim());
 });
