@@ -40,6 +40,7 @@ const feed = new Podcast(feedOptions);
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesCategory` _optional_ **array of objects** (iTunes specific) Categories for iTunes ( [{text:String, subcats:[{text:String, subcats:Array}]}] )
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the podcast
+ * `itunesType` _optional_ **string** (iTunes specific) type of podcast (`episodic` or `serial`)
  * `customNamespaces` _optional_ **object** Put additional namespaces in <rss> element (without 'xmlns:' prefix)
  * `customElements` _optional_ **array** Put additional elements in the feed (node-xml syntax)
 
@@ -84,6 +85,10 @@ feed.addItem(itemOptions);
  * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
  * `itunesKeywords` _optional_ **array of strings** (iTunes specific) keywords of the podcast
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the item
+ * `itunesSeason` _optional_ **number** (iTunes specific) season number (non-zero integer)
+ * `itunesEpisode` _optional_ **number** (iTunes specific) episode number (non-zero integer)
+ * `itunesTitle` _optional_ **string** (iTunes specific) episode title
+ * `itunesEpisodeType` _optional_ **string** (iTunes specific) the type of episode (`full` (default), `trailer`, `bonus`)
  * `customElements` _optional_ **array** Put additional elements in the item (node-xml syntax)
 
 #### Feed XML

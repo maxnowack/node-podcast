@@ -43,6 +43,10 @@ export default class Podcast {
       this.feedOptions.custom_elements.push({ 'itunes:summary': options.itunesSummary || options.description });
     }
 
+    if(options.itunesType) {
+      this.custom_elements.push({'itunes:type':  options.itunesType});
+    }
+
     this.feedOptions.itunesOwner = options.itunesOwner || { name: options.author || '', email: '' };
     this.feedOptions.custom_elements.push({
       'itunes:owner': [
@@ -105,6 +109,10 @@ export default class Podcast {
         },
       });
     }
+    if(options.itunesSeason) item.custom_elements.push({'itunes:season':  options.itunesSeason});
+    if(options.itunesEpisode) item.custom_elements.push({'itunes:episode':  options.itunesEpisode});
+    if(options.itunesTitle) item.custom_elements.push({'itunes:title':  options.itunesTitle});
+    if(options.itunesEpisodeType) item.custom_elements.push({'itunes:episodeType':  options.itunesEpisodeType});
 
     this.items.push(item);
     return this;
