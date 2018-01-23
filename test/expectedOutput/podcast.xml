@@ -13,6 +13,7 @@
     <itunes:author>John Doe</itunes:author>
     <itunes:subtitle>A show about everything</itunes:subtitle>
     <itunes:summary>All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store</itunes:summary>
+    <itunes:type>episodic</itunes:type>
     <itunes:owner>
       <itunes:name>John Doe</itunes:name>
       <itunes:email>john.doe@example.com</itunes:email>
@@ -37,6 +38,10 @@
       <itunes:explicit>No</itunes:explicit>
       <itunes:duration>7:04</itunes:duration>
       <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg"/>
+      <itunes:season>1</itunes:season>
+      <itunes:episode>1</itunes:episode>
+      <itunes:title>itunes item 1</itunes:title>
+      <itunes:episodeType>full</itunes:episodeType>
     </item>
   </channel>
 </rss>

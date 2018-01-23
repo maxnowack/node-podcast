@@ -43,8 +43,8 @@ export default class Podcast {
       this.feedOptions.custom_elements.push({ 'itunes:summary': options.itunesSummary || options.description });
     }
 
-    if(options.itunesType) {
-      this.custom_elements.push({'itunes:type':  options.itunesType});
+    if (options.itunesType) {
+      this.feedOptions.custom_elements.push({ 'itunes:type': options.itunesType });
     }
 
     this.feedOptions.itunesOwner = options.itunesOwner || { name: options.author || '', email: '' };
@@ -109,10 +109,10 @@ export default class Podcast {
         },
       });
     }
-    if(options.itunesSeason) item.custom_elements.push({'itunes:season':  options.itunesSeason});
-    if(options.itunesEpisode) item.custom_elements.push({'itunes:episode':  options.itunesEpisode});
-    if(options.itunesTitle) item.custom_elements.push({'itunes:title':  options.itunesTitle});
-    if(options.itunesEpisodeType) item.custom_elements.push({'itunes:episodeType':  options.itunesEpisodeType});
+    if (itemOptions.itunesSeason) item.custom_elements.push({ 'itunes:season': itemOptions.itunesSeason });
+    if (itemOptions.itunesEpisode) item.custom_elements.push({ 'itunes:episode': itemOptions.itunesEpisode });
+    if (itemOptions.itunesTitle) item.custom_elements.push({ 'itunes:title': itemOptions.itunesTitle });
+    if (itemOptions.itunesEpisodeType) item.custom_elements.push({ 'itunes:episodeType': itemOptions.itunesEpisodeType });
 
     this.items.push(item);
     return this;
