@@ -33,6 +33,7 @@ test('podcast', (t) => {
       email: 'john.doe@example.com',
     },
     itunesImage: 'http://example.com/podcasts/everything/AllAboutEverything.jpg',
+    itunesType: 'episodic',
     itunesCategory: [{
       text: 'Technology',
       subcats: [{
@@ -53,6 +54,10 @@ test('podcast', (t) => {
     itunesSubtitle: 'A short primer on table spices',
     itunesImage: 'http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg',
     itunesDuration: '7:04',
+    itunesEpisode: 1,
+    itunesSeason: 1,
+    itunesTitle: 'itunes item 1',
+    itunesEpisodeType: 'full',
   });
 
   t.is(feed.buildXml({ indent: '  ' }), expectedOutput.podcast.trim());
