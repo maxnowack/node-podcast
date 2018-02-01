@@ -94,6 +94,14 @@ export default class Podcast {
       custom_elements: itemOptions.customElements || [],
     };
 
+    if (itemOptions.content) {
+      item.custom_elements.push({
+        'content:encoded': {
+          _cdata: itemOptions.content,
+        },
+      });
+    }
+
     if (itemOptions.itunesAuthor || itemOptions.author) item.custom_elements.push({ 'itunes:author': itemOptions.itunesAuthor || itemOptions.author });
     if (itemOptions.itunesSubtitle) item.custom_elements.push({ 'itunes:subtitle': itemOptions.itunesSubtitle });
     if (itemOptions.itunesSummary || itemOptions.description) item.custom_elements.push({ 'itunes:summary': itemOptions.itunesSummary || itemOptions.description });
