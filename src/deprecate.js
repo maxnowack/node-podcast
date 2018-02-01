@@ -26,13 +26,16 @@ function deprecate({
     case 'property':
       message = 'Property';
       break;
+    case 'option':
+      message = 'Option';
+      break;
     case 'method':
       message = 'Method';
       break;
     case 'function':
       message = 'Function';
       break;
-    default: message = '';
+    default: message = type || '';
   }
   message += ` \`${name}\` has been deprecated`;
   if (version) {
