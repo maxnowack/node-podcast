@@ -107,7 +107,10 @@ export default class Podcast {
     if (itemOptions.itunesSummary || itemOptions.description) item.custom_elements.push({ 'itunes:summary': itemOptions.itunesSummary || itemOptions.description });
     item.custom_elements.push({ 'itunes:explicit': (itemOptions.itunesExplicit || false) ? 'Yes' : 'No' });
     if (itemOptions.itunesDuration) item.custom_elements.push({ 'itunes:duration': itemOptions.itunesDuration });
-    if (itemOptions.itunesKeywords) item.custom_elements.push({ 'itunes:keywords': itemOptions.itunesKeywords });
+    if (itemOptions.itunesKeywords) {
+      deprecate({ name: 'itunesKeywords', type: 'option' });
+      item.custom_elements.push({ 'itunes:keywords': itemOptions.itunesKeywords });
+    }
     if (itemOptions.itunesImage || itemOptions.image_url || itemOptions.imageUrl) {
       item.custom_elements.push({
         'itunes:image': {
@@ -137,7 +140,7 @@ export default class Podcast {
  */
   item(...args) {
     deprecate({
-      type: 'Method',
+      type: 'method',
       name: 'item',
       version: '1.0.0',
       alternative: 'addItem',
@@ -150,7 +153,7 @@ export default class Podcast {
  */
   xml(...args) {
     deprecate({
-      type: 'Method',
+      type: 'method',
       name: 'xml',
       version: '1.0.0',
       alternative: 'buildXml',
