@@ -78,6 +78,7 @@ feed.addItem(itemOptions);
     `size` or `file` fields have not been set.
     * `type` _optional_ **string** Mime type of the file. Will be guessed from the url if this parameter is
     not set.
+ * `content` _optional_  **string** Long html content for the episode
  * `itunesAuthor` _optional_  **string** (iTunes specific) author of the podcast
  * `itunesExplicit` _optional_ **boolean** (iTunes specific) specifies if the podcast contains explicit content
  * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
