@@ -129,12 +129,12 @@ const feed = new Podcast({
     itunesSummary: 'I am a summary',
     itunesOwner: { name: 'Max Nowack', email:'max@unsou.de' },
     itunesExplicit: false,
-    itunesCategory: {
+    itunesCategory: [{
         "text": "Entertainment",
         "subcats": [{
           "text": "Television"
         }]
-    },
+    }],
     itunesImage: 'http://link.to/image.png'
 });
 
