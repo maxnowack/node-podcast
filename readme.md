@@ -90,6 +90,7 @@ feed.addItem(itemOptions);
  * `itunesEpisode` _optional_ **number** (iTunes specific) episode number (non-zero integer)
  * `itunesTitle` _optional_ **string** (iTunes specific) episode title
  * `itunesEpisodeType` _optional_ **string** (iTunes specific) the type of episode (`full` (default), `trailer`, `bonus`)
+ * `itunesNewFeedUrl` _optional_ **string** (iTunes specific) The new podcast RSS Feed URL.
  * `customElements` _optional_ **array** Put additional elements in the item (node-xml syntax)
 
 #### Feed XML
@@ -155,7 +156,8 @@ feed.addItem({
     itunesSubtitle: 'I am a sub title',
     itunesSummary: 'I am a summary',
     itunesDuration: 12345,
-    itunesKeywords: ['javascript','podcast']
+    itunesKeywords: ['javascript','podcast'],
+    itunesNewFeedUrl: 'https://newlocation.com/example.rss',
 });
 
 // cache the xml to send to clients
