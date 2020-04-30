@@ -58,6 +58,7 @@ test('podcast', (t) => {
     itunesSeason: 1,
     itunesTitle: 'itunes item 1',
     itunesEpisodeType: 'full',
+    itunesNewFeedUrl: 'https://newlocation.com/example.rss',
   });
 
   t.is(feed.buildXml({ indent: '  ' }), expectedOutput.podcast.trim());
