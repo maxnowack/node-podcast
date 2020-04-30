@@ -42,6 +42,7 @@
       <itunes:episode>1</itunes:episode>
       <itunes:title>itunes item 1</itunes:title>
       <itunes:episodeType>full</itunes:episodeType>
+      <itunes:new-feed-url>https://newlocation.com/example.rss</itunes:new-feed-url>
     </item>
   </channel>
 </rss>
