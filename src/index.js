@@ -76,6 +76,7 @@ export default class Podcast {
       });
     }
 
+    this.items = [];
     const initialItems = items || [];
     initialItems.forEach((item) => this.addItem(item));
   }

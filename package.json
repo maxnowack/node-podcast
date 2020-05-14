@@ -37,17 +37,17 @@
     "concurrency": 5,
     "failFast": true,
     "require": [
-      "babel-register"
+      "@babel/register"
     ],
-    "babel": "inherit"
+    "babel": true
   },
   "babel": {
     "plugins": [
-      "transform-object-rest-spread"
+      "@babel/plugin-proposal-object-rest-spread"
     ],
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
             "node": "12.0.0"
@@ -70,11 +70,14 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
+    "@ava/babel": "^1.0.1",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
     "ava": "^3.8.2",
-    "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-babel": "^5.3.0",
