@@ -124,6 +124,8 @@ export default class Podcast {
     if (itemOptions.itunesEpisode) item.custom_elements.push({ 'itunes:episode': itemOptions.itunesEpisode });
     if (itemOptions.itunesTitle) item.custom_elements.push({ 'itunes:title': itemOptions.itunesTitle });
     if (itemOptions.itunesEpisodeType) item.custom_elements.push({ 'itunes:episodeType': itemOptions.itunesEpisodeType });
+    if (itemOptions.itunesNewFeedUrl) item.custom_elements.push({ 'itunes:new-feed-url': itemOptions.itunesNewFeedUrl });
+
 
     this.items.push(item);
     return this;
