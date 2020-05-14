@@ -27,9 +27,10 @@ export default class Podcast {
     this.feedOptions.geoRSS = options.geoRSS || false;
 
     this.feedOptions.custom_elements = options.customElements || [];
-    this.feedOptions.custom_namespaces = Object.assign({
+    this.feedOptions.custom_namespaces = {
       itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
-    }, options.customNamespaces);
+      ...options.customNamespaces,
+    };
 
     if (options.itunesAuthor || options.author) {
       this.feedOptions.custom_elements.push({ 'itunes:author': options.itunesAuthor || options.author });
@@ -76,7 +77,7 @@ export default class Podcast {
     }
 
     const initialItems = items || [];
-    initialItems.forEach(item => this.addItem(item));
+    initialItems.forEach((item) => this.addItem(item));
   }
 
   addItem(itemOptions = {}) {
@@ -133,7 +134,7 @@ export default class Podcast {
 
   buildXml(indent) {
     const rss = new RSS(this.feedOptions);
-    this.items.forEach(item => rss.item(item));
+    this.items.forEach((item) => rss.item(item));
     return rss.xml(indent);
   }
 
