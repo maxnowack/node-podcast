@@ -1,8 +1,7 @@
 language: node_js
 node_js:
 - node
-- '8'
-- '6'
+- '12'
 env:
   global:
     secure: XiAaUo+3/7DmbvnojQfPxQ7LRHyNnccRBERSGdC0XrO4a5w6YXhahSY6QB4jXAdYnH6QuHiD5MWKQjecRrmdyaleIKW9PdQZB7hVnYYIhvMV9+FhJSncfFKsOp4xVh3gaAQIEu27tay+M8BO1m9TZ9k/MBuaCy0GuAUSvRQ5IUg=
