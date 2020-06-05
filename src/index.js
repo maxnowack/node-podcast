@@ -1,6 +1,7 @@
 import RSS from 'rss';
 import deprecate from './deprecate';
 import buildiTunesCategories from './buildiTunesCategories';
+import durationFormat from './durationFormat';
 
 export default class Podcast {
   constructor(options, items) {
@@ -108,7 +109,7 @@ export default class Podcast {
     if (itemOptions.itunesSubtitle) item.custom_elements.push({ 'itunes:subtitle': itemOptions.itunesSubtitle });
     if (itemOptions.itunesSummary || itemOptions.description) item.custom_elements.push({ 'itunes:summary': itemOptions.itunesSummary || itemOptions.description });
     item.custom_elements.push({ 'itunes:explicit': (itemOptions.itunesExplicit || false) ? 'Yes' : 'No' });
-    if (itemOptions.itunesDuration) item.custom_elements.push({ 'itunes:duration': itemOptions.itunesDuration });
+    if (itemOptions.itunesDuration) item.custom_elements.push({ 'itunes:duration': durationFormat(itemOptions.itunesDuration) });
     if (itemOptions.itunesKeywords) {
       deprecate({ name: 'itunesKeywords', type: 'option' });
       item.custom_elements.push({ 'itunes:keywords': itemOptions.itunesKeywords });
