@@ -147,7 +147,7 @@ test('podcast using contructor with items', (t) => {
     itunesAuthor: 'John Doe',
     itunesSubtitle: 'A short primer on table spices',
     itunesImage: 'http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg',
-    itunesDuration: '7:04',
+    itunesDuration: 424,
     itunesEpisode: 1,
     itunesSeason: 1,
     itunesTitle: 'itunes item 1',
@@ -203,8 +203,9 @@ test('preformatted duration', (t) => {
     itunesEpisodeType: 'full',
   });
 
-  t.is(feed.buildXml({ indent: '  ' }), expectedOutput.podcast.trim());
-})
+  t.is(feed.buildXml({ indent: '  ' }), expectedOutput.preformattedDuration.trim());
+});
+
 test('html content', (t) => {
   const feed = new Podcast({
     title: 'title',
