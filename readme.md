@@ -84,7 +84,6 @@ feed.addItem(itemOptions);
  * `itunesSubtitle` _optional_  **string** (iTunes specific) subtitle for iTunes listing
  * `itunesSummary` _optional_  **string** (iTunes specific) summary for iTunes listing
  * `itunesDuration` _optional_ **number** (iTunes specific) duration of the podcast item in seconds
- * `itunesKeywords` _optional_ **array of strings** (iTunes specific) keywords of the podcast
  * `itunesImage` _optional_ **string** (iTunes specific) link to an image for the item
  * `itunesSeason` _optional_ **number** (iTunes specific) season number (non-zero integer)
  * `itunesEpisode` _optional_ **number** (iTunes specific) episode number (non-zero integer)
@@ -156,7 +155,6 @@ feed.addItem({
     itunesSubtitle: 'I am a sub title',
     itunesSummary: 'I am a summary',
     itunesDuration: 12345,
-    itunesKeywords: ['javascript','podcast'],
     itunesNewFeedUrl: 'https://newlocation.com/example.rss',
 });
 
