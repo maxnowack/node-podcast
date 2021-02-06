@@ -123,19 +123,19 @@ const feed = new Podcast({
     language: 'en',
     categories: ['Category 1','Category 2','Category 3'],
     pubDate: 'May 20, 2012 04:00:00 GMT',
-    ttl: '60',
+    ttl: 60,
     itunesAuthor: 'Max Nowack',
     itunesSubtitle: 'I am a sub title',
     itunesSummary: 'I am a summary',
-    itunesOwner: { name: 'Max Nowack', email:'max@unsou.de' },
+    itunesOwner: { name: 'Max Nowack', email: 'max@unsou.de' },
     itunesExplicit: false,
     itunesCategory: [{
-        "text": "Entertainment",
-        "subcats": [{
-          "text": "Television"
+        text: 'Entertainment',
+        subcats: [{
+          text: 'Television'
         }]
     }],
-    itunesImage: 'http://link.to/image.png'
+    itunesImage: 'http://example.com/image.png'
 });
 
 /* loop over data and add to feed */
