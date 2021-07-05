@@ -28,6 +28,8 @@ export class Podcast {
       customElements: options.customElements || [],
       customNamespaces: {
         itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
+        psc: "http://podlove.org/simple-chapters",
+        podcast: "https://podcastindex.org/namespace/1.0",
         ...options.customNamespaces,
       },
     };
