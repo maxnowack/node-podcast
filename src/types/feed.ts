@@ -26,6 +26,7 @@ export interface Feed {
   itunesCategory?: FeedItunesCategory[];
   itunesImage?: string;
   itunesType?: FeedItunesType;
+  geoRSS?: boolean;
   customNamespaces: {
     [key: string]: any;
   };
