@@ -24,6 +24,7 @@ export class Podcast {
       feedUrl: options.feedUrl || "",
       siteUrl: options.siteUrl || "",
       generator: options.generator || "Podcast for Node",
+      geoRSS: options.geoRSS || false,
       customElements: options.customElements || [],
       customNamespaces: {
         itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
