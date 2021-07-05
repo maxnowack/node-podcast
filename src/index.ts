@@ -165,7 +165,7 @@ export class Podcast {
     return;
   }
 
-  buildXml(options: { indent: string }) {
+  buildXml(options: { indent?: string } = {}) {
     const rss = new RSS({
       ...this.feedOptions,
       feed_url: this.feedOptions.feedUrl,
