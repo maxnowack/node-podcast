@@ -1,9 +1,9 @@
-function pad(num) {
+function pad(num: number | string) {
   const paddedString = `0${num}`;
   return paddedString.substring(paddedString.length - 2);
 }
-function toDurationString(seconds) {
-  if (typeof seconds !== 'number') {
+function toDurationString(seconds: number | string) {
+  if (typeof seconds !== "number") {
     return seconds;
   }
   const hh = Math.floor(seconds / (60 * 60));
