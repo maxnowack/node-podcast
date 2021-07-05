@@ -1,3 +1,4 @@
+export * from "./types/index";
 import RSS from "rss";
 import deprecate from "./deprecate";
 import { buildITunesCategories } from "./build-itunes-categories";
@@ -7,7 +8,7 @@ import { Feed } from "./types/feed";
 import { Item } from "./types/item";
 import { ItemOptions } from "./types/item-options";
 
-export default class Podcast {
+export class Podcast {
   feedOptions: Feed;
   items: Item[] = [];
 
@@ -181,3 +182,5 @@ export default class Podcast {
     return rss.xml(options);
   }
 }
+
+export default Podcast;
