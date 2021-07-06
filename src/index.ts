@@ -12,11 +12,14 @@ export class Podcast {
   feedOptions: Feed;
   items: Item[] = [];
 
-  constructor(options: FeedOptions, items?: ReadonlyArray<ItemOptions>) {
+  constructor(
+    options: FeedOptions = {},
+    items: ReadonlyArray<ItemOptions> = []
+  ) {
     this.feedOptions = this.init(options, items);
   }
 
-  init(options: FeedOptions, items?: ReadonlyArray<ItemOptions>) {
+  init(options: FeedOptions, items: ReadonlyArray<ItemOptions> = []) {
     const feedOptions: Feed = {
       ...options,
       title: options.title || "Untitled Podcast Feed",
@@ -93,7 +96,7 @@ export class Podcast {
     }
 
     this.items = [];
-    const initialItems = items || [];
+    const initialItems = items;
     initialItems.forEach((item) => this.addItem(item));
 
     return feedOptions;
@@ -185,5 +188,3 @@ export class Podcast {
     return rss.xml(options);
   }
 }
-
-export default Podcast;

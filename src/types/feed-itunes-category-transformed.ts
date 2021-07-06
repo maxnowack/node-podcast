@@ -1,3 +1,6 @@
 export interface FeedItunesCategoryTransformed {
-  [key: string]: any;
+  _attr?: { text: string };
+  "itunes:category"?:
+    | FeedItunesCategoryTransformed[]
+    | FeedItunesCategoryTransformed;
 }
