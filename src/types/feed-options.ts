@@ -1,3 +1,6 @@
 import { Feed } from "./feed";
+import { FeedNamespaceOptions } from "./feed-namespace-options";
 
-export type FeedOptions = Partial<Feed>;
+export interface FeedOptions extends Partial<Feed> {
+  namespaces?: FeedNamespaceOptions;
+}

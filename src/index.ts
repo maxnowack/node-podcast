@@ -1,92 +1,131 @@
 export * from "./types/index";
 import RSS from "rss";
 import deprecate from "./deprecate";
-import { buildITunesCategories } from "./build-itunes-categories";
+import { buildITunesCategoryElements } from "./build-itunes-category-elements";
+import { buildSimpleChaptersElement } from "./build-simple-chapters-element";
 import durationFormat from "./duration-format";
-import { FeedOptions } from "./types/feed-options";
-import { Feed } from "./types/feed";
-import { Item } from "./types/item";
-import { ItemOptions } from "./types/item-options";
+import {
+  FeedOptions,
+  ItemOptions,
+  Feed,
+  Item,
+  FeedNamespace,
+  FeedCustomElement,
+} from "./types/index";
 
 export class Podcast {
-  feedOptions: Feed;
+  feed: Feed;
   items: Item[] = [];
+  options: FeedOptions = {};
 
   constructor(
     options: FeedOptions = {},
     items: ReadonlyArray<ItemOptions> = []
   ) {
-    this.feedOptions = this.init(options, items);
+    this.options = this.getOptionDefaults(options);
+    this.feed = this.init(this.options, items);
   }
 
-  init(options: FeedOptions, items: ReadonlyArray<ItemOptions> = []) {
-    const feedOptions: Feed = {
-      ...options,
-      title: options.title || "Untitled Podcast Feed",
-      description: options.description || "",
-      feedUrl: options.feedUrl || "",
-      siteUrl: options.siteUrl || "",
-      generator: options.generator || "Podcast for Node",
-      geoRSS: options.geoRSS || false,
-      customElements: options.customElements || [],
+  protected getOptionDefaults(_options: FeedOptions): FeedOptions {
+    const options: FeedOptions = {
+      ..._options,
+      title: _options.title || "Untitled Podcast Feed",
+      description: _options.description || "",
+      feedUrl: _options.feedUrl || "",
+      siteUrl: _options.siteUrl || "",
+      generator: _options.generator || "Podcast for Node",
+      geoRSS: _options.geoRSS || false,
+      customElements: _options.customElements || [],
       customNamespaces: {
-        itunes: "http://www.itunes.com/dtds/podcast-1.0.dtd",
-        psc: "http://podlove.org/simple-chapters",
-        podcast: "https://podcastindex.org/namespace/1.0",
-        ...options.customNamespaces,
+        ..._options.customNamespaces,
       },
     };
 
+    options.itunesOwner = options.itunesOwner || {
+      name: options.author || "",
+      email: "",
+    };
+
+    options.namespaces = options.namespaces || {};
+
+    if (typeof options.namespaces.iTunes === "undefined") {
+      options.namespaces.iTunes = true;
+    }
+
+    if (typeof options.namespaces.podcast === "undefined") {
+      options.namespaces.podcast = true;
+    }
+
+    if (typeof options.namespaces.simpleChapters === "undefined") {
+      options.namespaces.simpleChapters = true;
+    }
+
+    return options;
+  }
+
+  protected getNamespaces(options: FeedOptions) {
+    const namespaces: FeedNamespace = {
+      ...options.customNamespaces,
+    };
+    if (options.namespaces?.iTunes) {
+      namespaces.itunes = "http://www.itunes.com/dtds/podcast-1.0.dtd";
+    }
+    if (options.namespaces?.simpleChapters) {
+      namespaces.psc = "http://podlove.org/simple-chapters";
+    }
+    if (options.namespaces?.podcast) {
+      namespaces.podcast = "https://podcastindex.org/namespace/1.0";
+    }
+    return namespaces;
+  }
+
+  protected getITunesFeedElements(options: FeedOptions) {
+    const customElements: FeedCustomElement[] = [];
+
     if (options.itunesAuthor || options.author) {
-      feedOptions.customElements.push({
+      customElements.push({
         "itunes:author": options.itunesAuthor || options.author,
       });
     }
 
     if (options.itunesSubtitle) {
-      feedOptions.customElements.push({
+      customElements.push({
         "itunes:subtitle": options.itunesSubtitle,
       });
     }
 
     if (options.itunesSummary || options.description) {
-      feedOptions.customElements.push({
+      customElements.push({
         "itunes:summary": options.itunesSummary || options.description,
       });
     }
 
     if (options.itunesType) {
-      feedOptions.customElements.push({
+      customElements.push({
         "itunes:type": options.itunesType,
       });
     }
 
-    feedOptions.itunesOwner = options.itunesOwner || {
-      name: options.author || "",
-      email: "",
-    };
-    feedOptions.customElements.push({
+    customElements.push({
       "itunes:owner": [
-        { "itunes:name": feedOptions.itunesOwner.name },
-        { "itunes:email": feedOptions.itunesOwner.email },
+        { "itunes:name": options.itunesOwner?.name || "" },
+        { "itunes:email": options.itunesOwner?.email || "" },
       ],
     });
 
-    feedOptions.customElements.push({
-      "itunes:explicit": options.itunesExplicit || false ? "Yes" : "No",
+    customElements.push({
+      "itunes:explicit": !!options.itunesExplicit,
     });
 
     if (options.itunesCategory) {
-      // [{text:String, subcats:[{text:String, subcats:Array}]}]
-      const categories = buildITunesCategories(options.itunesCategory);
+      const categories = buildITunesCategoryElements(options.itunesCategory);
       categories.forEach((category) => {
-        feedOptions.customElements = feedOptions.customElements || [];
-        feedOptions.customElements.push(category);
+        customElements.push(category);
       });
     }
 
     if (options.itunesImage || options.imageUrl) {
-      feedOptions.customElements.push({
+      customElements.push({
         "itunes:image": {
           _attr: {
             href: options.itunesImage || options.imageUrl,
@@ -95,11 +134,91 @@ export class Podcast {
       });
     }
 
+    return customElements;
+  }
+
+  init(options: FeedOptions, items: ReadonlyArray<ItemOptions> = []) {
+    const feed: Partial<Feed> = {
+      ...this.options,
+    };
+
+    feed.customNamespaces = {
+      ...this.getNamespaces(options),
+    };
+
+    if (options.namespaces?.iTunes) {
+      feed.customElements = [
+        ...(feed.customElements || []),
+        ...this.getITunesFeedElements(options),
+      ];
+    }
+
     this.items = [];
     const initialItems = items;
     initialItems.forEach((item) => this.addItem(item));
 
-    return feedOptions;
+    return feed as Feed;
+  }
+
+  protected getITunesItemElements(itemOptions: ItemOptions) {
+    const customElements: FeedCustomElement[] = [];
+
+    if (itemOptions.itunesAuthor || itemOptions.author) {
+      customElements.push({
+        "itunes:author": itemOptions.itunesAuthor || itemOptions.author,
+      });
+    }
+    if (itemOptions.itunesSubtitle) {
+      customElements.push({
+        "itunes:subtitle": itemOptions.itunesSubtitle,
+      });
+    }
+    if (itemOptions.itunesSummary || itemOptions.description) {
+      customElements.push({
+        "itunes:summary": itemOptions.itunesSummary || itemOptions.description,
+      });
+    }
+    customElements.push({
+      "itunes:explicit": itemOptions.itunesExplicit || false ? "Yes" : "No",
+    });
+    if (itemOptions.itunesDuration) {
+      customElements.push({
+        "itunes:duration": durationFormat(itemOptions.itunesDuration),
+      });
+    }
+    if (itemOptions.itunesKeywords) {
+      deprecate({ name: "itunesKeywords", type: "option" });
+      customElements.push({
+        "itunes:keywords": itemOptions.itunesKeywords,
+      });
+    }
+    if (itemOptions.itunesImage || itemOptions.imageUrl) {
+      customElements.push({
+        "itunes:image": {
+          _attr: {
+            href: itemOptions.itunesImage || itemOptions.imageUrl,
+          },
+        },
+      });
+    }
+    if (itemOptions.itunesSeason)
+      customElements.push({ "itunes:season": itemOptions.itunesSeason });
+    if (itemOptions.itunesEpisode)
+      customElements.push({ "itunes:episode": itemOptions.itunesEpisode });
+    if (itemOptions.itunesTitle)
+      customElements.push({ "itunes:title": itemOptions.itunesTitle });
+    if (itemOptions.itunesEpisodeType) {
+      customElements.push({
+        "itunes:episodeType": itemOptions.itunesEpisodeType,
+      });
+    }
+    if (itemOptions.itunesNewFeedUrl) {
+      customElements.push({
+        "itunes:new-feed-url": itemOptions.itunesNewFeedUrl,
+      });
+    }
+
+    return customElements;
   }
 
   addItem(itemOptions: ItemOptions): void {
@@ -113,71 +232,31 @@ export class Podcast {
       });
     }
 
-    if (itemOptions.itunesAuthor || itemOptions.author) {
-      item.customElements.push({
-        "itunes:author": itemOptions.itunesAuthor || itemOptions.author,
-      });
+    if (this.options.namespaces?.iTunes) {
+      item.customElements = [
+        ...(item.customElements || []),
+        ...this.getITunesItemElements(itemOptions),
+      ];
     }
-    if (itemOptions.itunesSubtitle) {
-      item.customElements.push({
-        "itunes:subtitle": itemOptions.itunesSubtitle,
-      });
+
+    if (this.options.namespaces?.simpleChapters && itemOptions.pscChapters) {
+      item.customElements = [
+        ...(item.customElements || []),
+        buildSimpleChaptersElement(itemOptions.pscChapters),
+      ];
     }
-    if (itemOptions.itunesSummary || itemOptions.description) {
-      item.customElements.push({
-        "itunes:summary": itemOptions.itunesSummary || itemOptions.description,
-      });
-    }
-    item.customElements.push({
-      "itunes:explicit": itemOptions.itunesExplicit || false ? "Yes" : "No",
-    });
-    if (itemOptions.itunesDuration) {
-      item.customElements.push({
-        "itunes:duration": durationFormat(itemOptions.itunesDuration),
-      });
-    }
-    if (itemOptions.itunesKeywords) {
-      deprecate({ name: "itunesKeywords", type: "option" });
-      item.customElements.push({
-        "itunes:keywords": itemOptions.itunesKeywords,
-      });
-    }
-    if (itemOptions.itunesImage || itemOptions.imageUrl) {
-      item.customElements.push({
-        "itunes:image": {
-          _attr: {
-            href: itemOptions.itunesImage || itemOptions.imageUrl,
-          },
-        },
-      });
-    }
-    if (itemOptions.itunesSeason)
-      item.customElements.push({ "itunes:season": itemOptions.itunesSeason });
-    if (itemOptions.itunesEpisode)
-      item.customElements.push({ "itunes:episode": itemOptions.itunesEpisode });
-    if (itemOptions.itunesTitle)
-      item.customElements.push({ "itunes:title": itemOptions.itunesTitle });
-    if (itemOptions.itunesEpisodeType) {
-      item.customElements.push({
-        "itunes:episodeType": itemOptions.itunesEpisodeType,
-      });
-    }
-    if (itemOptions.itunesNewFeedUrl) {
-      item.customElements.push({
-        "itunes:new-feed-url": itemOptions.itunesNewFeedUrl,
-      });
-    }
+
     this.items.push(item as Item);
     return;
   }
 
   buildXml(options: { indent?: string } = {}) {
     const rss = new RSS({
-      ...this.feedOptions,
-      feed_url: this.feedOptions.feedUrl,
-      site_url: this.feedOptions.siteUrl,
-      custom_elements: this.feedOptions.customElements,
-      custom_namespaces: this.feedOptions.customNamespaces,
+      ...this.feed,
+      feed_url: this.feed.feedUrl,
+      site_url: this.feed.siteUrl,
+      custom_elements: this.feed.customElements,
+      custom_namespaces: this.feed.customNamespaces,
     });
     this.items.forEach((item) =>
       rss.item({
