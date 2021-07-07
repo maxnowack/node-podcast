@@ -10,8 +10,8 @@
 
 ### Create a new feed
 
-```js
-import Podcast from 'podcast';
+```ts
+import { Podcast } from 'podcast';
 
 const feed = new Podcast(feedOptions);
 ```
@@ -49,7 +49,7 @@ const feed = new Podcast(feedOptions);
 An item can be used for a blog entry, project update, log entry, etc.  Your RSS feed
 an have any number of items. Most feeds use 20 or fewer items.
 
-```js
+```ts
 feed.addItem(itemOptions);
 ```
 
@@ -94,7 +94,7 @@ feed.addItem(itemOptions);
 
 #### Feed XML
 
-```js
+```ts
 const xml = feed.buildXml(indent);
 ```
 
@@ -105,16 +105,16 @@ This returns the XML as a string.
 
 ## Example Usage
 
-```js
-import Podcast from 'podcast';
+```ts
+import { Podcast } from 'podcast';
 
 /* lets create an rss feed */
 const feed = new Podcast({
     title: 'title',
     description: 'description',
-    feed_url: 'http://example.com/rss.xml',
-    site_url: 'http://example.com',
-    image_url: 'http://example.com/icon.png',
+    feedUrl: 'http://example.com/rss.xml',
+    siteUrl: 'http://example.com',
+    imageUrl: 'http://example.com/icon.png',
     docs: 'http://example.com/rss/docs.html',
     author: 'Dylan Greene',
     managingEditor: 'Dylan Greene',

@@ -1,17 +1,27 @@
 import test from "ava";
 import { includeFolder } from "./utils/include-folder";
 import mockdate from "mockdate";
-import Podcast from "../src/index";
+import { Podcast, FeedNamespaceOptions } from "../src/index";
 import { FeedOptions } from "../src/types/feed-options";
 import { ItemOptions } from "../src/types/item-options";
 
-const expectedOutput = includeFolder(`${__dirname}/expectedOutput`, /.*\.xml$/);
+const expectedOutput = includeFolder(
+  `${__dirname}/expectedOutput/itunes`,
+  /.*\.xml$/
+);
+
+const namespaces: FeedNamespaceOptions = {
+  iTunes: true,
+  podcast: false,
+  simpleChapters: false,
+};
 
 // Dates in XML files will always be this value.
 mockdate.set("Wed, 10 Dec 2014 19:04:57 GMT");
 
 test("podcast", (t) => {
   const feed = new Podcast({
+    namespaces,
     title: "title",
     description: "description",
     feedUrl: "http://example.com/rss.xml",
@@ -68,6 +78,7 @@ test("podcast", (t) => {
 });
 test("podcast with new feed url", (t) => {
   const feed = new Podcast({
+    namespaces,
     title: "title",
     description: "description",
     feedUrl: "http://example.com/rss.xml",
@@ -128,6 +139,7 @@ test("podcast with new feed url", (t) => {
 });
 test("podcast using contructor with items", (t) => {
   const feedInfo: FeedOptions = {
+    namespaces,
     title: "title",
     description: "description",
     feedUrl: "http://example.com/rss.xml",
@@ -185,6 +197,7 @@ test("podcast using contructor with items", (t) => {
 
 test("preformatted duration", (t) => {
   const feed = new Podcast({
+    namespaces,
     title: "title",
     description: "description",
     feedUrl: "http://example.com/rss.xml",
@@ -245,6 +258,7 @@ test("preformatted duration", (t) => {
 
 test("html content", (t) => {
   const feed = new Podcast({
+    namespaces,
     title: "title",
     description: "description",
     feedUrl: "http://example.com/rss.xml",

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:psc="http://podlove.org/simple-chapters" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
     <title><![CDATA[title]]></title>
     <description><![CDATA[description]]></description>
@@ -18,7 +18,7 @@
       <itunes:name>John Doe</itunes:name>
       <itunes:email>john.doe@example.com</itunes:email>
     </itunes:owner>
-    <itunes:explicit>No</itunes:explicit>
+    <itunes:explicit>false</itunes:explicit>
     <itunes:category text="Technology">
       <itunes:category text="Software">
         <itunes:category text="node.js"/>
@@ -35,7 +35,7 @@
       <itunes:author>John Doe</itunes:author>
       <itunes:subtitle>A short primer on table spices</itunes:subtitle>
       <itunes:summary>description 1</itunes:summary>
-      <itunes:explicit>No</itunes:explicit>
+      <itunes:explicit>false</itunes:explicit>
       <itunes:duration>7:04</itunes:duration>
       <itunes:image href="http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg"/>
       <itunes:season>1</itunes:season>

@@ -179,7 +179,7 @@ export class Podcast {
       });
     }
     customElements.push({
-      "itunes:explicit": itemOptions.itunesExplicit || false ? "Yes" : "No",
+      "itunes:explicit": !!itemOptions.itunesExplicit,
     });
     if (itemOptions.itunesDuration) {
       customElements.push({
