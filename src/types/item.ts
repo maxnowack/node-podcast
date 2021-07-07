@@ -1,5 +1,8 @@
 import { ItemEnclosure } from "./item-enclosure";
-export interface Item {
+import { FeedCustomElement } from "./feed-custom-element";
+import { ItemITunes } from "./item-itunes";
+import { ItemSimpleChapters } from "./item-simple-chapters";
+export interface Item extends ItemITunes, ItemSimpleChapters {
   title: string;
   description: string;
   url: string;
@@ -24,5 +27,5 @@ export interface Item {
   itunesNewFeedUrl?: string;
   itunesKeywords?: string;
   itunesEpisodeType?: "full" | "trailer" | "bonus";
-  customElements?: any[];
+  customElements?: FeedCustomElement[];
 }

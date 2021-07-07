@@ -1,8 +1,7 @@
-import { FeedItunesCategory } from "./feed-itunes-category";
-import { FeedItunesOwner } from "./feed-itunes-owner";
-import { FeedItunesType } from "./feed-itunes-type";
-
-export interface Feed {
+import { FeedITunes } from "./feed-itunes";
+import { FeedNamespace } from "./feed-namespace";
+import { FeedCustomElement } from "./feed-custom-element";
+export interface Feed extends FeedITunes {
   feedUrl: string;
   siteUrl: string;
   imageUrl?: string;
@@ -18,17 +17,7 @@ export interface Feed {
   categories?: string[];
   pubDate?: Date | string;
   ttl?: number;
-  itunesAuthor?: string;
-  itunesSubtitle?: string;
-  itunesSummary?: string;
-  itunesOwner?: FeedItunesOwner;
-  itunesExplicit?: boolean;
-  itunesCategory?: FeedItunesCategory[];
-  itunesImage?: string;
-  itunesType?: FeedItunesType;
   geoRSS?: boolean;
-  customNamespaces: {
-    [key: string]: any;
-  };
-  customElements: any[];
+  customNamespaces: FeedNamespace;
+  customElements: FeedCustomElement[];
 }
