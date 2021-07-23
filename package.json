@@ -50,8 +50,8 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.1",
-    "@types/node": "^16.3.2",
+    "@tsconfig/node16": "^1.0.2",
+    "@types/node": "^16.4.1",
     "@types/rss": "^0.0.29",
     "ava": "^3.15.0",
     "mockdate": "^3.0.5",
