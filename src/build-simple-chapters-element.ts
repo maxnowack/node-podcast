@@ -29,6 +29,5 @@ export const buildSimpleChaptersElement = (
     }
   }
 
-  console.debug("chaptersElement", chaptersElement);
   return chaptersElement;
 };
