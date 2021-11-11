@@ -34,7 +34,6 @@ export class Podcast {
       feedUrl: _options.feedUrl || "",
       siteUrl: _options.siteUrl || "",
       generator: _options.generator || "Podcast for Node",
-      geoRSS: _options.geoRSS || false,
       customElements: _options.customElements || [],
       customNamespaces: {
         ..._options.customNamespaces,
