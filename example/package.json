@@ -1,0 +1,31 @@
+{
+  "name": "@podcast/example",
+  "version": "2.0.0",
+  "description": "Podcast RSS feed generator example",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/maxnowack/node-podcast.git"
+  },
+  "keywords": [
+    "podcast",
+    "rss",
+    "typescript",
+    "feed",
+    "nodejs",
+    "example"
+  ],
+  "author": "Pascal Garber <pascal@artandcode.studio>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxnowack/node-podcast/issues"
+  },
+  "homepage": "https://github.com/maxnowack/node-podcast#readme",
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}

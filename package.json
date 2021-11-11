@@ -15,7 +15,8 @@
     "build:tests": "tsc --project ./tsconfig.tests.json",
     "build:types": "tsc --project ./tsconfig.types.json",
     "clean": "rm -rf dist",
-    "test": "npm run lint && ava"
+    "test": "npm run lint && ava",
+    "example": "npm run start -w @podcast/example"
   },
   "files": [
     "dist/*"
@@ -46,6 +47,9 @@
     "mail": "max@unsou.de",
     "url": "http://github.com/maxnowack/node-podcast/issues"
   },
+  "workspaces": [
+    "example"
+],
   "dependencies": {
     "rss": "^1.2.2"
   },
