@@ -49,7 +49,7 @@
   },
   "workspaces": [
     "example"
-],
+  ],
   "dependencies": {
     "rss": "^1.2.2"
   },
