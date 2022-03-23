@@ -1,0 +1,1 @@
+export type FeedItunesExplicit = boolean | ('yes' | 'no' | 'clean')

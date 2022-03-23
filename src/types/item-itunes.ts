@@ -2,7 +2,7 @@ export interface ItemITunes {
   /** (iTunes specific) author of the podcast */
   itunesAuthor?: string;
   /** (iTunes specific) specifies if the podcast contains explicit content */
-  itunesExplicit?: boolean;
+  itunesExplicit?: boolean | ('yes' | 'no' | 'clean');
   /** (iTunes specific) subtitle for iTunes listing */
   itunesSubtitle?: string;
   /** (iTunes specific) summary for iTunes listing */

@@ -2,6 +2,7 @@ export * from "./deprecate";
 export * from "./feed-custom-element";
 export * from "./feed-itunes-category";
 export * from "./feed-itunes-category-elements";
+export * from "./feed-itunes-explicit";
 export * from "./feed-itunes-owner";
 export * from "./feed-itunes-type";
 export * from "./feed-itunes";
