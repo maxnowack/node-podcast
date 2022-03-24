@@ -1,5 +1,5 @@
 import { FeedItunesCategory } from "./feed-itunes-category";
-import { FeedItunesExplicit } from "./feed-itunes-explicit";
+import { ItunesExplicit } from "./itunes-explicit";
 import { FeedItunesOwner } from "./feed-itunes-owner";
 import { FeedItunesType } from "./feed-itunes-type";
 
@@ -8,7 +8,7 @@ export interface FeedITunes {
   itunesSubtitle?: string;
   itunesSummary?: string;
   itunesOwner?: FeedItunesOwner;
-  itunesExplicit?: FeedItunesExplicit;
+  itunesExplicit?: ItunesExplicit;
   itunesCategory?: FeedItunesCategory[];
   itunesImage?: string;
   itunesType?: FeedItunesType;
