@@ -1,6 +1,7 @@
 name: Dev Container CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
     paths: 
@@ -25,4 +26,4 @@ jobs:
       run: docker build . --file Dockerfile --tag vsc-node-podcast:${{steps.vars.outputs.tag}}
       working-directory: .devcontainer
     - name: Run the container
-      run: docker run --rm vsc-node-podcast:${{steps.vars.outputs.tag}} --version
+      run: docker run --rm -v `pwd`:/workspaces/node-podcast --workdir /workspaces/node-podcast vsc-node-podcast:${{steps.vars.outputs.tag}} /bin/sh -c "npm install && npm run build && npm run test && npm run example"
