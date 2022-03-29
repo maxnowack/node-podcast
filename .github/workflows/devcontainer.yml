@@ -1,0 +1,29 @@
+name: Dev Container CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths: 
+      - .devcontainer/**
+  pull_request:
+    branches: [ master ]
+    paths: 
+      - .devcontainer/**
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get the version
+      id: vars
+      run: echo ::set-output name=tag::$(echo ${GITHUB_RUN_ID})
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag vsc-node-podcast:${{steps.vars.outputs.tag}}
+      working-directory: .devcontainer
+    - name: Run the container
+      run: docker run --rm -v `pwd`:/workspaces/node-podcast --workdir /workspaces/node-podcast vsc-node-podcast:${{steps.vars.outputs.tag}} /bin/sh -c "npm install && npm run build && npm run test && npm run example"
