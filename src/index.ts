@@ -113,7 +113,7 @@ export class Podcast {
     });
 
     customElements.push({
-      "itunes:explicit": !!options.itunesExplicit,
+      "itunes:explicit": typeof options.itunesExplicit === "boolean" ? !!options.itunesExplicit : options.itunesExplicit || false,
     });
 
     if (options.itunesCategory) {
@@ -178,7 +178,7 @@ export class Podcast {
       });
     }
     customElements.push({
-      "itunes:explicit": !!itemOptions.itunesExplicit,
+      "itunes:explicit": typeof itemOptions.itunesExplicit === "boolean" ? !!itemOptions.itunesExplicit : itemOptions.itunesExplicit || false,
     });
     if (itemOptions.itunesDuration) {
       customElements.push({
