@@ -1,6 +1,6 @@
 {
   "name": "@podcast/example",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Podcast RSS feed generator example",
   "main": "index.ts",
   "scripts": {
