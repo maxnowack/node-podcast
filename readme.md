@@ -11,9 +11,14 @@
 ### Create a new feed
 
 ```ts
+// ES6 / TypeScript Import
 import { Podcast } from 'podcast';
-
 const feed = new Podcast(feedOptions);
+
+// Node.js require
+const { Podcast } = require('podcast');
+const feed = new Podcast(feedOptions);
+
 ```
 
 #### `feedOptions`
