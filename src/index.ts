@@ -40,10 +40,7 @@ export class Podcast {
       },
     };
 
-    options.itunesOwner = options.itunesOwner || {
-      name: options.author || "",
-      email: "",
-    };
+    options.itunesOwner = options.itunesOwner;
 
     options.namespaces = options.namespaces || {};
 
@@ -105,15 +102,20 @@ export class Podcast {
       });
     }
 
-    customElements.push({
-      "itunes:owner": [
-        { "itunes:name": options.itunesOwner?.name || "" },
-        { "itunes:email": options.itunesOwner?.email || "" },
-      ],
-    });
+    if (options.itunesOwner) {
+      customElements.push({
+        "itunes:owner": [
+          { "itunes:name": options.itunesOwner?.name || "" },
+          { "itunes:email": options.itunesOwner?.email || "" },
+        ],
+      });
+    }
 
     customElements.push({
-      "itunes:explicit": typeof options.itunesExplicit === "boolean" ? !!options.itunesExplicit : options.itunesExplicit || false,
+      "itunes:explicit":
+        typeof options.itunesExplicit === "boolean"
+          ? !!options.itunesExplicit
+          : options.itunesExplicit || false,
     });
 
     if (options.itunesCategory) {
@@ -178,7 +180,10 @@ export class Podcast {
       });
     }
     customElements.push({
-      "itunes:explicit": typeof itemOptions.itunesExplicit === "boolean" ? !!itemOptions.itunesExplicit : itemOptions.itunesExplicit || false,
+      "itunes:explicit":
+        typeof itemOptions.itunesExplicit === "boolean"
+          ? !!itemOptions.itunesExplicit
+          : itemOptions.itunesExplicit || false,
     });
     if (itemOptions.itunesDuration) {
       customElements.push({
